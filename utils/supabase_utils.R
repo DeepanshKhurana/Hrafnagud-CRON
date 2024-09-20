@@ -386,7 +386,7 @@ get_cron_time <- function(
 
   hour <- as.numeric(
     format(
-      current_time,
+      time,
       "%H",
       tz = tz
     )
