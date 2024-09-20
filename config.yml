@@ -2,8 +2,8 @@ default:
   endpoints:
     robin: !expr c("stocks", "funds")
     midas: !expr c("mmtc", "bullions")
-    livingston: !expr c("trips", "details", "counts")
+    livingston: !expr c("trips", "counts")
     ebenezer: !expr c("stocks", "funds", "deposits", "savings", "mmtc", "sgbs", "portfolio", "networth")
-      summary: !expr c("stocks", "funds", "deposits", "savings", "mmtc", "sgbs")
+    ebenezer_summary: !expr c("stocks", "funds", "deposits", "savings", "mmtc", "sgbs")
     fogg: !expr c("tasks", "analysis")
     chronos: !expr c("events")
