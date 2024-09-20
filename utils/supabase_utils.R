@@ -263,12 +263,6 @@ put_table_row <- function(
     combine = "and"
   )
 
-  cron_time <- format(
-    Sys.time(),
-    format = "%H",
-    tz = "Asia/Calcutta"
-  )
-
   if (is_valid_table(table_name, conn)) {
     table_schema <- get_table_schema(table_name)
     columns <- filter_columns(table_schema, is_update)
@@ -281,7 +275,7 @@ put_table_row <- function(
           conn = conn
         ),
         input_list,
-        cron_time = glue("{cron_time}:00:00")
+        cron_time = glue("{get_cron_time()}:00")
       )
     }
 
@@ -375,4 +369,30 @@ put_table_row <- function(
   } else {
     stop(glue("Table '{table_name}' does not exist!"))
   }
+}
+
+get_cron_time <- function(
+  time = Sys.time(),
+  tz = "Asia/Kolkata"
+) {
+
+  minute <- as.numeric(
+    format(
+      time,
+      "%M",
+      tz = tz
+    )
+  )
+
+  hour <- as.numeric(
+    format(
+      current_time,
+      "%H",
+      tz = tz
+    )
+  )
+
+  glue(
+    "{hour}:{ifelse(minute < 15, '00', ifelse(minute < 45, '30', '00'))}"
+  )
 }
