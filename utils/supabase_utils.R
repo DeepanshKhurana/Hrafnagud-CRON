@@ -265,7 +265,8 @@ put_table_row <- function(
 
   cron_time <- format(
     Sys.time(),
-    format = "%H"
+    format = "%H",
+    tz = "Asia/Calcutta"
   )
 
   if (is_valid_table(table_name, conn)) {
