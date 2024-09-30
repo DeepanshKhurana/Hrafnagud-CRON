@@ -1,10 +1,4 @@
 box::use(
-  utils/supabase_utils[
-    put_table_row
-  ]
-)
-
-box::use(
   config[
     get
   ],
@@ -61,7 +55,7 @@ make_endpoint <- function(
 #' @param ... Additional parameters to include in the request.
 #' @return The parsed JSON response.
 #' @export
-process_store_get_api <- function(
+process_get_api <- function(
   endpoint = NULL,
   ...
 ) {
@@ -81,19 +75,6 @@ process_store_get_api <- function(
     ) |>
     req_perform() |>
     resp_body_json()
-
-  put_table_row(
-    table_name = "hrafnagud_cache",
-    input_list = list(
-      "endpoint" = endpoint,
-      "response" = toJSON(
-        response,
-        auto_unbox = TRUE,
-        null = "null",
-        pretty = TRUE
-      )
-    )
-  )
 }
 
 #' Create a complete endpoint URL from base and suffix.
