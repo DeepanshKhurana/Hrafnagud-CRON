@@ -59,6 +59,9 @@ process_get_api <- function(
   endpoint = NULL,
   ...
 ) {
+
+  Sys.sleep(10)
+
   print(
     glue(
       "Processing: {endpoint}"
