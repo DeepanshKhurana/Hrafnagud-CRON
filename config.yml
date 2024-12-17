@@ -7,3 +7,4 @@ default:
     ebenezer_summary: !expr c("stocks", "funds", "deposits", "savings", "mmtc", "sgbs")
     fogg: !expr c("tasks", "analysis")
     chronos: !expr c("events")
+    webster: !expr c("today")
